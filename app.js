@@ -17,10 +17,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 // Routes
+
+// Task 1
 app.get('/',(req,res) =>{
 res.send('Hello World -- Ankit Yadav');
 });
 
+// Task -2 
 app.get('/authors',(req,res) => {
 
 app.locals.author = require('./Routes/author.json');
@@ -42,7 +45,7 @@ app.locals.post = require('./Routes/posts.json');
 	
 
 });
-// Setting cookies
+// Task -3 Setting cookies
 app.get('/setcookies',(req,res) => {
 
 	var cookie = req.cookie
@@ -58,7 +61,7 @@ app.get('/setcookies',(req,res) => {
     }
 });
 
-// Getting  Cookies
+// Task -4 Getting  Cookies
 
 app.use(morgan('dev'));
 app.use(cookieParser());
@@ -76,6 +79,7 @@ app.get('/getcookies',(req,res) => {
 
 });
 
+// Task -5 Dening acces to robots.txt
 app.get('/robots.txt/:id?',(req,res) => {
 	if(req.params.id  == '123')
 	{
@@ -96,10 +100,12 @@ app.get('/robots.txt/:id?',(req,res) => {
     }
 });
 
+// Task -6 Rendering a html file
 app.get('/html',(req,res) => {
 	res.sendFile(path.join(__dirname+'/Routes/ankit.html'));
 });
-
+// Task -7 Inputing a text and posting to a end point
+app.get('/html',(req,res) => {
 app.get('/input',(req,res) => {
 	res.render('edit-form.jade');
 });
