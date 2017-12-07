@@ -101,7 +101,15 @@ app.get('/html',(req,res) => {
 });
 
 app.get('/input',(req,res) => {
-	res.send('input')
+	res.render('edit-form.jade');
+});
+
+// Post response handling endpoint
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+app.post('/ankit',urlencodedParser,(req,res) => {
+	
+	var text22 = req.body.name;
+	res.send('Entered Text is = '+ text22);
 });
 
 
