@@ -4,3 +4,4 @@ remove.js
 Routes/author.js
 Routes/Task-1.js
 Routes/download.png
+node_modules/*
