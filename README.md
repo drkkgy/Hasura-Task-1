@@ -37,6 +37,7 @@ $ npm install cookie-parser
 $ npm install http-server
 $ npm install body-parser
 $ npm install morgan
+$ npm install jade
 $ npm install --save path
 $ npm install get-json
 $ npm install xml2json
@@ -64,6 +65,8 @@ Type one of the following to acces the home of the local app
  hence with this task one is completed for the remianing task we type these urls
  
  Task -2 http://127.0.0.1:3000/authors/noInternet
+ Task -2(a) http://127.0.0.1:3000/authors/noInternet/author_list
+ Task -2(b) http://127.0.0.1:3000/authors/noInternet/post_list
  Task -3 http://127.0.0.1:3000/setcookies
  Task -4 http://127.0.0.1:3000/getcookies
  Task -5 http://127.0.0.1:3000/robots.txt (Ensure that the network is running ) To acces the robots.txt type following url http://127.0.0.1:3000/robots.txt/pass  [Default pass = 123]

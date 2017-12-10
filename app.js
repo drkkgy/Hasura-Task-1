@@ -73,9 +73,9 @@ app.locals.authors = require('./Routes/author.json');
 app.locals.post = require('./Routes/posts.json');
 
     var count = 0;
-    app.locals.authors.forEach(function(item)//app.locals.authors
+    app.locals.authors.forEach(function(item)
 	{
-		app.locals.post.forEach(function(item1){// app.locals.post
+		app.locals.post.forEach(function(item1){
 		if(item.id == item1.userId)
 		{
           count++;
@@ -86,6 +86,29 @@ app.locals.post = require('./Routes/posts.json');
         res.write('Author = ' + item.name + " No of Posts done = " + count +"\n");
         count = 0;
 	});
+     res.end('Task Completed');
+});
+
+app.get('/authors/noInternet/author_list',(req,res) => {
+app.locals.authors1 = require('./Routes/author.json');
+
+    app.locals.authors1.forEach(function(item)
+	{
+        
+        res.write('Author = ' + item.name +"\n" );
+	});
+     res.end('Task Completed');
+});
+
+app.get('/authors/noInternet/post_list',(req,res) => {
+app.locals.post = require('./Routes/posts.json');
+
+    app.locals.post.forEach(function(item1)
+	{
+		
+        
+        res.write('id = ' + item1.id + 'Post = ' + item1.title +  "\n");
+    });
      res.end('Task Completed');
 });
 
