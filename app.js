@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var path    = require('path');
 var port  = 3000;
-//var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest; was not able to parse data directly from the urls
+//var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;// was not able to parse data directly from the urls
 
 
 
@@ -45,6 +45,7 @@ app.locals.post = require('./Routes/posts.json');
 	
 
 });
+
 // Task -3 Setting cookies
 app.get('/setcookies',(req,res) => {
 
@@ -61,14 +62,14 @@ app.get('/setcookies',(req,res) => {
     }
 });
 
-// Task -4 Getting  Cookies
+// Task -4 Getting  Cookies<----------------- need atention
 
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(session({
 	secret: 'Hasura -- IMAD',
 	saveUninitialized: true,
-	resave: true
+	resave: true,
 }));
 
 app.get('/getcookies',(req,res) => {
@@ -104,8 +105,9 @@ app.get('/robots.txt/:id?',(req,res) => {
 app.get('/html',(req,res) => {
 	res.sendFile(path.join(__dirname+'/Routes/ankit.html'));
 });
+
+
 // Task -7 Inputing a text and posting to a end point
-app.get('/html',(req,res) => {
 app.get('/input',(req,res) => {
 	res.render('edit-form.jade');
 });
@@ -117,10 +119,6 @@ app.post('/ankit',urlencodedParser,(req,res) => {
 	var text22 = req.body.name;
 	res.send('Entered Text is = '+ text22);
 });
-
-
-
-
 
 //starting the node server 
 app.listen(port);
