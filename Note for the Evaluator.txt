@@ -1,0 +1,28 @@
+Respected Sir 
+
+Sir i am new to Node js as well as express  and i am learning to improve my skills 
+
+I have tried to complete all the tasls to the best of my knowledge and your feedbacks are very important to me to improve and grow as a developer
+
+In task 2 i was trying to fetch the Json objects from the url but i am facing some issues and i am trying to figure out and find the solution hence as a alternatively i have the created a offline version for the task and have 
+marked the code as 
+
+Rest of the code
+
+//-------------------------------------------------------
+
+  Code in here for task 2 that i am trying to figure out
+
+//------------------------------------------------------ 
+
+Rest of the code
+
+please reffer to the Readme.md on how to perform task 2
+
+if i am able to fix the problem i will update the code and will remove this note as well !!
+
+Thanks for prvoding us the platform to develop and grow !!
+
+Regards Ankit 
+
+ 
