@@ -58,7 +58,7 @@ Usage of the app
 Hence to perform the above tasks you have to open your Web browser (chrome , Edge etc)
 
 Type one of the following to acces the home of the local app
- --> http://127.0.0.1:3000/
+ --> http://127.0.0.1:3000/ or 
  --> http://localhost:3000/
  
  hence with this task one is completed for the remianing task we type these urls
