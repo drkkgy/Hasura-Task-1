@@ -7,6 +7,10 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var path    = require('path');
 var port  = 3000;
+var getJSON = require('get-json');
+var convert = require('xml-js');
+var url1 = 'https://jsonplaceholder.typicode.com/users';
+var url2 = 'https://jsonplaceholder.typicode.com/posts';
 //var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;// was not able to parse data directly from the urls
 
 
@@ -15,7 +19,8 @@ var port  = 3000;
 var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-
+var author;
+var post;
 // Routes
 
 // Task 1
@@ -24,26 +29,64 @@ res.send('Hello World -- Ankit Yadav');
 });
 
 // Task -2 
+//---------------------------------------------------------------------------------------------------
 app.get('/authors',(req,res) => {
 
-app.locals.author = require('./Routes/author.json');
-app.locals.post = require('./Routes/posts.json');
-    
+getJSON(url1,function(error,response){
+    if(!response.ok)
+    {
+	console.log("Error in geting the Author data and error is = " + error);
+    }
+author = JSON.parse(convert.xml2json(response,{compact: true, spaces: 4}));
+});
+getJSON(url2,function(error,response){
+	 if(!response.ok)//<---------------------------------
+    {
+	console.log("Error in geting the Post data and error is = " + error);
+    }
+post = JSON.parse(convert.xml2json(response,{compact: true, spaces: 4}));
+});
+//app.locals.authors = require('./Routes/author.json');
+//app.locals.post = require('./Routes/posts.json');
+
     var count = 0;
-    app.locals.author.forEach(function(item)
-	{   
-		app.locals.post.forEach(function(item1){
-		
+    author.forEach(function(item)//app.locals.authors
+	{
+		post.forEach(function(item1){// app.locals.post
 		if(item.id == item1.userId)
 		{
           count++;
 		}
+
         });
-        res.send('Author = ' + item.name + " No of Posts done = " + count +"\n");
+        
+        res.write('Author = ' + item.name + " No of Posts done = " + count +"\n");
         count = 0;
 	});
-	
+     res.end('Task Completed');
+     
+});
+//--------------------------------------------------------------------------------------------------------
+// Task 2 Backup Mode or Hardwired incase of no network
+app.get('/authors/noInternet',(req,res) => {
+app.locals.authors = require('./Routes/author.json');
+app.locals.post = require('./Routes/posts.json');
 
+    var count = 0;
+    app.locals.authors.forEach(function(item)//app.locals.authors
+	{
+		app.locals.post.forEach(function(item1){// app.locals.post
+		if(item.id == item1.userId)
+		{
+          count++;
+		}
+
+        });
+        
+        res.write('Author = ' + item.name + " No of Posts done = " + count +"\n");
+        count = 0;
+	});
+     res.end('Task Completed');
 });
 
 // Task -3 Setting cookies
