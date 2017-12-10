@@ -19,8 +19,7 @@ var url2 = 'https://jsonplaceholder.typicode.com/posts';
 var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-var author;
-var post;
+
 // Routes
 
 // Task 1
@@ -37,17 +36,15 @@ getJSON(url1,function(error,response){
     {
 	console.log("Error in geting the Author data and error is = " + error);
     }
-author = JSON.parse(convert.xml2json(response,{compact: true, spaces: 4}));
-});
+var  author = JSON.parse(response);// convert.xml2json(response,{compact: true, spaces: 4})
+// -----
 getJSON(url2,function(error,response){
-	 if(!response.ok)//<---------------------------------
+	 if(!response.ok)
     {
 	console.log("Error in geting the Post data and error is = " + error);
     }
-post = JSON.parse(convert.xml2json(response,{compact: true, spaces: 4}));
-});
-//app.locals.authors = require('./Routes/author.json');
-//app.locals.post = require('./Routes/posts.json');
+var post = JSON.parse(response);
+// -------
 
     var count = 0;
     author.forEach(function(item)//app.locals.authors
@@ -63,7 +60,10 @@ post = JSON.parse(convert.xml2json(response,{compact: true, spaces: 4}));
         res.write('Author = ' + item.name + " No of Posts done = " + count +"\n");
         count = 0;
 	});
+	});
+});
      res.end('Task Completed');
+
      
 });
 //--------------------------------------------------------------------------------------------------------
