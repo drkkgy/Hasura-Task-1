@@ -44,7 +44,7 @@ getJSON(url2,function(error,response){
 	console.log("Error in geting the Post data and error is = " + error);
     }
 var post = JSON.parse(response);
-// -------
+// ------
 
     var count = 0;
     author.forEach(function(item)//app.locals.authors
