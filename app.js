@@ -62,7 +62,7 @@ app.get('/setcookies',(req,res) => {
     }
 });
 
-// Task -4 Getting  Cookies<----------------- need atention
+// Task -4 Getting  Cookies
 
 app.use(morgan('dev'));
 app.use(cookieParser());
@@ -73,7 +73,7 @@ app.use(session({
 }));
 
 app.get('/getcookies',(req,res) => {
-	res.render('cookies Retrieved in Console');
+	res.send('cookies Retrieved in Console');
 	console.log(req.cookies);
 	console.log('**************');
 	console.log(req.session);
