@@ -13,7 +13,7 @@ fs.readFile('index.html',(err,html) => {
     }
     else
         {
-            console.log("NO Error Detected");
+            console.log("NO big Error Detected");
 }
 });
 const server  = http.createServer((req,res) => {
